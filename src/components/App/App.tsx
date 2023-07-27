@@ -12,17 +12,17 @@ import './App.css';
 
 
 
-const swapi = new SwapiService;
+// const swapi = new SwapiService;
 
-swapi.getAllStarships().then(starships => {
-  starships.forEach((starship: any) => {
-    console.log(starship.name);
-  });
-})
+// swapi.getAllStarships().then(starships => {
+//   starships.forEach((starship: any) => {
+//     console.log(starship.name);
+//   });
+// })
 
-swapi.getStarship(1).then(starship => {
-  console.log(starship);
-})
+// swapi.getStarship(1).then(starship => {
+//   console.log(starship);
+// })
 
 function App() {
 
