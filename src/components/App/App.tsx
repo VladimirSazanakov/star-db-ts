@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import Header from '../Header';
@@ -27,12 +27,18 @@ import './App.css';
 function App() {
 
   const swapi = new SwapiService;
+  const [randomPlanet, setRandomPlanet] = useState(false);
+
+  function toggleRandomPlanet(){
+    setRandomPlanet((randomPlanet => !randomPlanet))
+  }
 
   return (
     <div className="App">
       <Header />
-      <RandomPlanet />
+      {randomPlanet ? <RandomPlanet />: null}
 
+      <button className='button' onClick={toggleRandomPlanet}>ToogleRandomePlanet</button>
       <div className='row md2'>
         <div className='col-md-6'>
           <ItemList />
