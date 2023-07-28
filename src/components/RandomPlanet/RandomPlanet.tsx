@@ -42,8 +42,12 @@ const RandomPlanet = () => {
       })
       .catch(onError);
   }
+
+  let interval : any;
+  
   useEffect(() => {
-    updatePlanet();
+    interval = setInterval(updatePlanet, 5000);
+    // updatePlanet();
 
   }, []);
 
