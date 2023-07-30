@@ -26,6 +26,7 @@ const RandomPlanet = () => {
   };
 
   const updatePlanet = () => {
+    console.log('Function updatePlanet');
     const id: any = Math.floor(Math.random() * 26) + 2;
     // const id: any = 4000;
     swapiService
@@ -43,13 +44,20 @@ const RandomPlanet = () => {
       .catch(onError);
   }
 
-  let interval : any;
-  
+  let interval: any;
+
   useEffect(() => {
     interval = setInterval(updatePlanet, 5000);
+    console.log("use Effect []");
     // updatePlanet();
+    return () => {
+      console.log('component Will Unmount');
+      clearInterval(interval);
+    };
 
   }, []);
+
+
 
   const { id, name, population, rotationPeriod, diameter } = planet;
 
@@ -82,6 +90,7 @@ const RandomPlanet = () => {
 }
 
 function PlanetView({ planet }: any) {
+  console.log('Planet view');
   const { id, name, population, rotationPeriod, diameter } = planet;
   return (
     <>

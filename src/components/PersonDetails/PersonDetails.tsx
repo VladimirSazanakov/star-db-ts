@@ -2,7 +2,7 @@ import React from 'react';
 
 import './PersonDetails';
 
-const PersonDetails = () => {
+const PersonDetails = (props: any) => {
   return (
     <div className='person-details card'>
       <img className='person-image' src="" alt="" />
