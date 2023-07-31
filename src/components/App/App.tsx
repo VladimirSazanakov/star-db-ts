@@ -28,23 +28,29 @@ function App() {
 
   const swapi = new SwapiService;
   const [randomPlanet, setRandomPlanet] = useState(false);
+  const [selectedPerson, setSelectedPerson] = useState(0);
 
-  function toggleRandomPlanet(){
+  function toggleRandomPlanet() {
     setRandomPlanet((randomPlanet => !randomPlanet))
+  }
+
+  function onPersonSelected(id: number) {
+    setSelectedPerson(id);
+    console.log(id);
   }
 
   return (
     <div className="App">
       <Header />
-      {randomPlanet ? <RandomPlanet />: null}
+      {randomPlanet ? <RandomPlanet /> : null}
 
       <button className='button' onClick={toggleRandomPlanet}>ToogleRandomePlanet</button>
       <div className='row md2'>
         <div className='col-md-6'>
-          <ItemList />
+          <ItemList OnItemSelector={onPersonSelected} />
         </div>
         <div className='col-md-6'>
-          <PersonDetails />
+          <PersonDetails personId={selectedPerson} />
         </div>
       </div>
 
