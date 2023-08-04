@@ -9,6 +9,10 @@ import PersonDetails from '../PersonDetails';
 import SwapiService from '../../services/SwapiServise';
 
 import './App.css';
+import ErrorButton from '../ErrorButton';
+import PeoplePage from '../PeoplePage';
+
+import { SwapiServiceProvider, SwapiServiceConsumer } from '../SwapiServiceContex';
 
 
 
@@ -28,33 +32,27 @@ function App() {
 
   const swapi = new SwapiService;
   const [randomPlanet, setRandomPlanet] = useState(false);
-  const [selectedPerson, setSelectedPerson] = useState(0);
+  
 
   function toggleRandomPlanet() {
     setRandomPlanet((randomPlanet => !randomPlanet))
   }
 
-  function onPersonSelected(id: number) {
-    setSelectedPerson(id);
-    console.log(id);
-  }
+  
 
   return (
     <div className="App">
+      <SwapiServiceProvider value={swapi} >
       <Header />
       {randomPlanet ? <RandomPlanet /> : null}
 
       <button className='button' onClick={toggleRandomPlanet}>ToogleRandomePlanet</button>
-      <div className='row md2'>
-        <div className='col-md-6'>
-          <ItemList OnItemSelector={onPersonSelected} />
-        </div>
-        <div className='col-md-6'>
-          <PersonDetails personId={selectedPerson} />
-        </div>
-      </div>
+      <ErrorButton />
+      <PeoplePage />
+      <PeoplePage />
+      <PeoplePage />
 
-
+    </SwapiServiceProvider>
     </div>
   );
 }
